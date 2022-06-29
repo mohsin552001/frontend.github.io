@@ -79,11 +79,145 @@
     </div>
 
     <div id="contentContiner">
-        <div id="sidebar"></div>
-        <div id="content"></div>
+        <div id="sidebar">
+            <div id="creatContactBtn">
+                <svg width="30" height="30" viewBox="0 0 36 36">
+                    <path fill="#34A853" d="M16 16v14h4V20z"></path>
+                    <path fill="#4285F4" d="M30 16H20l-4 4h14z"></path>
+                    <path fill="#FBBC05" d="M6 16v4h10l4-4z"></path>
+                    <path fill="#EA4335" d="M20 16V6h-4v14z"></path>
+                    <path fill="none" d="M0 0h36v36H0z"></path>
+                </svg>
+                Creat Contacts
+            </div>
+            <div id="links">
+                <div class="link active">
+                    <div class="content"><i class="fa fa-user-o" aria-hidden="true"></i>
+
+                        Contact</div>
+                    <div class="counter">500</div>
+                </div>
+                <div class="link ">
+                    <div class="content"><i class="fa fa-tags" aria-hidden="true"></i>
+
+
+                        Labels</div>
+
+                </div>
+                <div class="link ">
+                    <div class="content">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+
+                        Creat Lable
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="content">
+
+            <div class="table">
+                <div class="tableHead">
+                    <div class="coulmn">Name</div>
+                    <div class="coulmn">Email</div>
+                    <div class="coulmn">Phone Number</div>
+                    <div class="coulmn">Lables</div>
+                </div>
+                <div class="tableBody">
+
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+
+        let Contacts = [
+            {
+                id: 1,
+                name: "David",
+                email: "david@gmail.com",
+                phone: '929929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+            {
+                id: 2,
+                name: "Finch",
+                email: "finch@gmail.com",
+                phone: '929929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+            {
+                id: 3,
+                name: "john",
+                email: "john@gmail.com",
+                phone: '92902022002929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+            {
+                id: 1,
+                name: "David",
+                email: "david@gmail.com",
+                phone: '929929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+            {
+                id: 2,
+                name: "Finch",
+                email: "finch@gmail.com",
+                phone: '929929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+            {
+                id: 1,
+                name: "David",
+                email: "david@gmail.com",
+                phone: '929929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+            {
+                id: 2,
+                name: "Finch",
+                email: "finch@gmail.com",
+                phone: '929929292',
+                lables: ["lable1,lable2,lable3"]
+
+            },
+        ]
+        window.onload = () => {
+            RenderContacts()
+        }
+
+        function RenderContacts() {
+            let tableBody = document.querySelector('.tableBody')
+            let tableRowsHtml = ``;
+
+
+            Contacts.forEach((contact) => {
+                tableRowsHtml += `<div class="tableRow">
+
+<div class="coulmn">
+    <div class="avatar">A</div>
+    <div class="checkbox"><input type="checkbox"></div>
+    ${contact.name}
+</div>
+<div class="coulmn">${contact.email}</div>
+<div class="coulmn">${contact.phone}</div>
+<div class="coulmn">${contact.lables}</div>
+</div>
+`
+                tableBody.innerHTML = tableRowsHtml
+            })
+        }
+
         function searchkeyup(event) {
             let keywords = event.currentTarget.value
 
