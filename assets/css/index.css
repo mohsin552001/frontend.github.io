@@ -31,12 +31,25 @@ body {
       padding-top: 7px; }
       #header #searchsection #searchContainer button {
         position: absolute;
-        left: 0px;
         border: 0px;
         background-color: transparent;
-        top: 16px;
+        top: 10px;
         width: 40px;
         color: #585858; }
+        #header #searchsection #searchContainer button.searchButton {
+          left: 0px; }
+        #header #searchsection #searchContainer button.clearSearcButton {
+          right: 0px;
+          display: none; }
+        #header #searchsection #searchContainer button div {
+          width: 29px;
+          height: 29px;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+        #header #searchsection #searchContainer button:hover div {
+          background-color: #e8e8e8;
+          border-radius: 50%; }
       #header #searchsection #searchContainer input {
         width: 100%;
         height: 35px;
@@ -45,7 +58,49 @@ body {
         color: #5a5a5a;
         outline: none;
         border: 0px solid;
-        border-radius: 5px; }
+        border-radius: 5px;
+        box-sizing: border-box; }
+        #header #searchsection #searchContainer input:focus {
+          background-color: #fff;
+          box-shadow: 0px 0px 5px #ccc; }
+      #header #searchsection #searchContainer .suggestions {
+        border: 1px solid #ccc;
+        width: 100%;
+        min-height: 90px;
+        box-sizing: border-box;
+        box-shadow: 2px 2px 5px #ccc;
+        position: absolute;
+        display: none; }
+        #header #searchsection #searchContainer .suggestions .suggestion {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0px 13px;
+          font-size: 13px;
+          height: 30px;
+          color: #333;
+          cursor: pointer; }
+          #header #searchsection #searchContainer .suggestions .suggestion .email {
+            color: #bdbbbb;
+            font-size: 10px; }
+          #header #searchsection #searchContainer .suggestions .suggestion:hover {
+            background-color: #f0f0f0; }
+          #header #searchsection #searchContainer .suggestions .suggestion .avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            background-color: darkorange;
+            border-radius: 50%;
+            color: #fff; }
+      #header #searchsection #searchContainer.suggestionVisible input {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px; }
+      #header #searchsection #searchContainer.suggestionVisible .suggestions {
+        display: block; }
+      #header #searchsection #searchContainer.suggestionVisible button.clearSearcButton {
+        display: block; }
   #header #actionsection {
     width: 100px;
     display: flex;

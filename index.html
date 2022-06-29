@@ -23,9 +23,52 @@
         </div>
         <div id="searchsection">
             <div id="searchContainer">
-                <button><i class="fa fa-search" aria-hidden="true"></i>
+                <button class="searchButton">
+                    <div><i class="fa fa-search" aria-hidden="true"></i></div>
                 </button>
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" onkeyup="searchkeyup(event)">
+                <button class="clearSearcButton">
+                    <div><i class="fa fa-times" aria-hidden="true" onclick="clearSearchInput()"></i></div>
+                </button>
+                <div class="suggestions">
+
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+                    <div class="suggestion">
+                        <div class="avatar">A</div>
+                        <div class="name">David</div>
+                        <div class="email">David@gmail.com</div>
+                    </div>
+
+                </div>
             </div>
         </div>
         <div id="actionsection">
@@ -40,6 +83,35 @@
         <div id="content"></div>
     </div>
 
+    <script>
+        function searchkeyup(event) {
+            let keywords = event.currentTarget.value
+
+            if (keywords.length > 0) {
+                showSuggestionbox()
+            } else {
+                hideSuggestionbox()
+            }
+
+        }
+
+        function clearSearchInput() {
+            let input = document.querySelector('#searchContainer input')
+            input.value = ""
+            hideSuggestionbox()
+        }
+
+        function showSuggestionbox() {
+            let searchContainer = document.querySelector('#searchContainer');
+
+            searchContainer.classList.add('suggestionVisible')
+        }
+        function hideSuggestionbox() {
+            let searchContainer = document.querySelector('#searchContainer');
+
+            searchContainer.classList.remove('suggestionVisible')
+        }
+    </script>
 </body>
 
 </html>
