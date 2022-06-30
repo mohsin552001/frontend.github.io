@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss": "node-sass assets/sass -o assets/css",
-    "scss-w": "npm run scss & node-sass assets/sass ow- assets/css"
+    "scss-w": "npm run scss && npm run scss -- -w"
   },
   "author": "",
   "license": "ISC",

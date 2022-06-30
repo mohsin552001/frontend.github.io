@@ -5,7 +5,7 @@ body {
     height: 100vh;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
-    color: #3c4043;
+
 }
 
 .avatar {
@@ -282,7 +282,39 @@ body {
                 padding-bottom: 13px;
                 margin: 20px 0px;
 
+                &.hide {
+                    display: none;
+                }
+            }
 
+            .actionBar {
+                display: none;
+                justify-content: space-between;
+                border-bottom: 1px solid #ccc;
+                height: 50px;
+                align-items: center;
+
+                .buttons {
+                    display: flex;
+                    gap: 10px;
+                    padding-left: 20px;
+
+                    i {
+                        color: #1967d2;
+                        cursor: pointer;
+                    }
+                }
+
+                &.active {
+                    display: flex;
+                }
+
+                .rightSection {
+                    display: flex;
+                    gap: 5px;
+                    font-size: 12px;
+                    color: #1967d2;
+                }
             }
 
             .coulmn {
@@ -309,9 +341,9 @@ body {
                         font-size: 11px;
                         flex-grow: 1;
 
-                        // padding: 8px 0px;
-                        // padding-top: 12px;
-                        // padding-bottom: 12px;
+                        padding: 8px 0px;
+                        padding-top: 12px;
+                        padding-bottom: 12px;
                         display: flex;
                         align-items: center;
                         cursor: pointer;
@@ -321,11 +353,17 @@ body {
                         .checkbox {
                             display: none;
                             justify-content: center;
+                            padding-left: 5px;
 
                         }
                     }
 
-                    &:hover {
+                    .actionButtons {
+                        display: none;
+                    }
+
+                    &:hover,
+                    &.selected {
                         background-color: rgb(241, 241, 241);
 
                         .checkbox {
@@ -334,6 +372,12 @@ body {
 
                         .avatar {
                             display: none;
+                        }
+                    }
+
+                    &:hover {
+                        .actionButtons {
+                            display: block;
                         }
                     }
 
