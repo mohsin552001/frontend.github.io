@@ -61,12 +61,12 @@
 
 
 <div id="labledialogeEditor" class="dialoge">
-    <div class="dialogeOverlay"></div>
+    <div class="dialogeOverlay" onclick="hideCreatLableDialog()"></div>
     <form action="javascript:void(0)" class="dialogeContentContainer">
         <div class="dialogeTitle">Creat lable</div>
         <div class="dialogeContent"><input type="text" placeholder="Type the lable"></div>
         <div class="dialogefooter">
-            <button>cancel</button>
+            <button onclick="hideCreatLableDialog()">cancel</button>
             <button type="submit">save</button>
         </div>
 

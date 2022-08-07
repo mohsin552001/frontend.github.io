@@ -45,3 +45,8 @@ function showCreatLableDialog() {
     let dialog = document.querySelector('#labledialogeEditor')
     dialog.classList.add('active')
 }
+
+function hideCreatLableDialog() {
+    let dialog = document.querySelector('#labledialogeEditor')
+    dialog.classList.remove('active')
+}
