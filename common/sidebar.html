@@ -9,6 +9,7 @@
         </svg>
         Creat Contacts
     </div>
+
     <div id="links">
         <div class="link active">
             <div class="content"><i class="fa fa-user-o" aria-hidden="true"></i>
@@ -16,20 +17,58 @@
                 Contact</div>
             <div class="counter">500</div>
         </div>
-        <div class="link ">
-            <div class="content"><i class="fa fa-tags" aria-hidden="true"></i>
+        <div class="divider"></div>
+        <div class="dropdownSection">
+            <div class="link " onclick="sidebarDropDownToggleClicked(event.currentTarget)">
+                <div class="content"><i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
 
 
-                Labels</div>
+                    Labels
+                </div>
 
-        </div>
-        <div class="link ">
-            <div class="content">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-
-                Creat Lable
             </div>
+            <div class="dropdownContent">
+                <div class="link ">
+                    <div class="content"><i class="fa fa-tags" aria-hidden="true"></i>
 
+                        Lable 1</div>
+                    <div class="counter">500</div>
+                    <div class="actions">
+                        <div class="actionButton">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                        <div class="actionButton">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="link " onclick="showCreatLableDialog()">
+                    <div class="content">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+
+                        Creat Lable
+                    </div>
+
+                </div>
+            </div>
         </div>
+
+        <div class="divider"></div>
+
     </div>
+</div>
+
+
+<div id="labledialogeEditor" class="dialoge">
+    <div class="dialogeOverlay"></div>
+    <form action="javascript:void(0)" class="dialogeContentContainer">
+        <div class="dialogeTitle">Creat lable</div>
+        <div class="dialogeContent"><input type="text" placeholder="Type the lable"></div>
+        <div class="dialogefooter">
+            <button>cancel</button>
+            <button type="submit">save</button>
+        </div>
+
+    </form>
 </div>

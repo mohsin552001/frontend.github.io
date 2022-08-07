@@ -15,6 +15,7 @@
 
     <div id="contentContiner">
         <div id="sidebarplaceholder"></div>
+
         <div id="content">
 
             <div class="table">
@@ -30,7 +31,7 @@
                 <div class="actionBar">
                     <div class="buttons">
                         <i class="fa fa-tags" aria-hidden="true"></i>
-                        <i onclick="deleteSelectContacts()" class="fa fa-trash" aria-hidden="true"></i>
+                        <i class="fa fa-trash" onclick="deleteSelectContacts()" aria-hidden="true"></i>
 
                     </div>
                     <div class="rightSection">
@@ -111,21 +112,23 @@
         function getselectedContacts() {
             return Contacts.filter((contact) => contact.selected)
         }
+        //samajh nahi aye deleteSelectContacts
+        function deleteSelectContacts(pSelectedContacts = undefined) {
+            let selectedContacts = pSelectedContacts ? pSelectedContacts : getselectedContacts()
 
+            getselectedContacts()
+            let selectedContactIds = selectedContacts.map((contact) => contact.id)
+            Contacts = Contacts.filter((contact) => !selectedContactIds.includes(contact.id))
 
+            selectedContacts = Contacts.filter((contact) => contact.selected)
 
-        function deleteSelectContacts(pSelectedcontacts = undefined) {
-            let selectedcontacts = pSelectedcontacts ? pSelectedcontacts : getselectedContacts()
-            let selectedContactIds = selectedcontacts.map((contact) => contact.id)
-            contacts = Contacts.filter((contact) => !selectedContactIds.includes(contact.id))
-
-
-            selectedContact = Contacts.filter((contact) => contact.selected)
             RenderContacts()
-            selectedContact = getselectedContacts
-            updateNumberOfSelectedContacts(selectedContact.length)
-            showHideSelectedContacts(selectedContact)
+            selectedContacts = getselectedContacts()
+            updateNumberOfSelectedContacts(selectedContacts.length)
+            showHideSelectedContacts(selectedContacts)
         }
+
+
 
         window.onload = () => {
             RenderContacts()
@@ -145,16 +148,16 @@
                                 selectedContact.selected = false
                             }
                         }
-                        let selectedcontacts = Contacts.filter((contact) => contact.selected)
-                        showHideSelectedContacts(selectedcontacts)
-                        updateNumberOfSelectedContacts(selectedcontacts.length)
+                        let selectedContacts = Contacts.filter((contact) => contact.selected)
+                        showHideSelectedContacts(selectedContacts)
+                        updateNumberOfSelectedContacts(selectedContacts.length)
                     })
                 })
 
         }
 
-        function showHideSelectedContacts(selectedcontacts) {
-            if (selectedcontacts.length > 0) {
+        function showHideSelectedContacts(selectedContacts) {
+            if (selectedContacts.length > 0) {
                 document.querySelector('.tableHead').classList.add('hide')
                 document.querySelector('.actionBar').classList.add('active')
             } else {
@@ -188,14 +191,15 @@
 <div class="coulmn">${contact.lables}</div>
 <div class="coulmn" style="width:40px">
     <div class="actionButtons">
-        <i onclick="deleteContact(${contact.id})" class="fa fa-trash" aria-hidden="true"></i>
+        <i  class="fa fa-trash" onclick="deleteContact(${contact.id})" aria-hidden="true"></i>
         </div>
 
     </div>
 </div>
 `
-                tableBody.innerHTML = tableRowsHtml
+
             })
+            tableBody.innerHTML = tableRowsHtml
         }
 
         function deleteContact(contactId) {
@@ -205,7 +209,32 @@
             }
         }
 
+        function searchkeyup(event) {
+            let keywords = event.currentTarget.value
 
+            if (keywords.length > 0) {
+                showSuggestionbox()
+            } else {
+                hideSuggestionbox()
+            }
+
+        }
+        function clearSearchInput() {
+            let input = document.querySelector('#searchContainer input')
+            input.value = ""
+            hideSuggestionbox()
+        }
+
+        function showSuggestionbox() {
+            let searchContainer = document.querySelector('#searchContainer');
+
+            searchContainer.classList.add('suggestionVisible')
+        }
+        function hideSuggestionbox() {
+            let searchContainer = document.querySelector('#searchContainer');
+
+            searchContainer.classList.remove('suggestionVisible')
+        }
 
     </script>
     <script src="./assets/js/common.js"></script>

@@ -198,6 +198,80 @@ body {
     }
 }
 
+.dialoge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+
+    .dialogeOverlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+
+        background-color: rgba(#000, 0.5);
+
+    }
+
+    .dialogeContentContainer {
+        min-width: 300px;
+        min-height: 200px;
+        background-color: #fff;
+        z-index: 1;
+        border-radius: 10px;
+        box-shadow: rgba(#000000, 0.2);
+        display: flex;
+        flex-direction: column;
+
+        .dialogeTitle {
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .dialogeContent {
+            flex-grow: 1;
+            padding: 10px 20px;
+
+            input {
+                width: 100%;
+                border: 0px;
+                border-bottom: 1px solid #ccc;
+                outline: none;
+                height: 30px;
+
+                &:focus {
+                    border-bottom: 2px solid #1b73e8;
+                }
+            }
+        }
+
+        .dialogefooter {
+            min-height: 30px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+
+            button {
+                background-color: transparent;
+                border: 0px;
+                color: #1b73e8;
+            }
+        }
+    }
+}
 
 #contentContiner {
     display: flex;
@@ -206,8 +280,15 @@ body {
     #sidebar {
 
 
-        width: 200px;
+        min-width: 200px;
         height: 100%;
+
+
+        .divider {
+            width: 100%;
+            border-top: 1px solid #ccc;
+            margin: 5px 0px;
+        }
 
         #creatContactBtn {
             border-radius: 50px;
@@ -244,6 +325,10 @@ body {
                     display: flex;
                     gap: 20px;
                     align-items: center;
+
+                    .fa-chevron-up {
+                        display: none;
+                    }
                 }
 
                 .fa {
@@ -263,6 +348,52 @@ body {
                         color: #1967d2;
                     }
                 }
+            }
+
+            .dropdownSection {
+                .dropdownContent {
+                    display: none;
+
+                    .actions {
+                        display: none;
+                        gap: 5px;
+
+                        .link {
+                            &:hover {
+                                .actions {
+                                    display: flex;
+
+                                    .actionButton .fa:hover {
+                                        color: rgb(58, 58, 58);
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.active {
+
+                    >.link:first-child {
+                        background-color: #f1f2f3;
+
+                        .content {
+                            .fa-chevron-up {
+                                display: block;
+                            }
+
+                            .fa-chevron-down {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .dropdownContent {
+                        display: block;
+                    }
+                }
+
             }
         }
     }

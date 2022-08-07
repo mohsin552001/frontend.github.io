@@ -130,12 +130,70 @@ body {
       cursor: pointer;
       font-size: 23px; }
 
+.dialoge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  display: none; }
+  .dialoge.active {
+    display: block; }
+  .dialoge .dialogeOverlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .dialoge .dialogeContentContainer {
+    min-width: 300px;
+    min-height: 200px;
+    background-color: #fff;
+    z-index: 1;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column; }
+    .dialoge .dialogeContentContainer .dialogeTitle {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px; }
+    .dialoge .dialogeContentContainer .dialogeContent {
+      flex-grow: 1;
+      padding: 10px 20px; }
+      .dialoge .dialogeContentContainer .dialogeContent input {
+        width: 100%;
+        border: 0px;
+        border-bottom: 1px solid #ccc;
+        outline: none;
+        height: 30px; }
+        .dialoge .dialogeContentContainer .dialogeContent input:focus {
+          border-bottom: 2px solid #1b73e8; }
+    .dialoge .dialogeContentContainer .dialogefooter {
+      min-height: 30px;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px; }
+      .dialoge .dialogeContentContainer .dialogefooter button {
+        background-color: transparent;
+        border: 0px;
+        color: #1b73e8; }
+
 #contentContiner {
   display: flex;
   height: 100%; }
   #contentContiner #sidebar {
-    width: 200px;
+    min-width: 200px;
     height: 100%; }
+    #contentContiner #sidebar .divider {
+      width: 100%;
+      border-top: 1px solid #ccc;
+      margin: 5px 0px; }
     #contentContiner #sidebar #creatContactBtn {
       border-radius: 50px;
       display: flex;
@@ -164,6 +222,8 @@ body {
           display: flex;
           gap: 20px;
           align-items: center; }
+          #contentContiner #sidebar #links .link .content .fa-chevron-up {
+            display: none; }
         #contentContiner #sidebar #links .link .fa {
           font-size: 12px;
           color: #6e6e6e; }
@@ -174,6 +234,23 @@ body {
           #contentContiner #sidebar #links .link.active,
           #contentContiner #sidebar #links .link.active .fa {
             color: #1967d2; }
+      #contentContiner #sidebar #links .dropdownSection .dropdownContent {
+        display: none; }
+        #contentContiner #sidebar #links .dropdownSection .dropdownContent .actions {
+          display: none;
+          gap: 5px; }
+          #contentContiner #sidebar #links .dropdownSection .dropdownContent .actions .link:hover .actions {
+            display: flex; }
+            #contentContiner #sidebar #links .dropdownSection .dropdownContent .actions .link:hover .actions .actionButton .fa:hover {
+              color: #3a3a3a; }
+      #contentContiner #sidebar #links .dropdownSection.active > .link:first-child {
+        background-color: #f1f2f3; }
+        #contentContiner #sidebar #links .dropdownSection.active > .link:first-child .content .fa-chevron-up {
+          display: block; }
+        #contentContiner #sidebar #links .dropdownSection.active > .link:first-child .content .fa-chevron-down {
+          display: none; }
+      #contentContiner #sidebar #links .dropdownSection.active .dropdownContent {
+        display: block; }
   #contentContiner #content {
     flex-grow: 1;
     padding-left: 20px;

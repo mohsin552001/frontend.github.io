@@ -1,31 +1,9 @@
 
-function searchkeyup(event) {
-    let keywords = event.currentTarget.value
 
-    if (keywords.length > 0) {
-        showSuggestionbox()
-    } else {
-        hideSuggestionbox()
-    }
 
-}
 
-function clearSearchInput() {
-    let input = document.querySelector('#searchContainer input')
-    input.value = ""
-    hideSuggestionbox()
-}
 
-function showSuggestionbox() {
-    let searchContainer = document.querySelector('#searchContainer');
 
-    searchContainer.classList.add('suggestionVisible')
-}
-function hideSuggestionbox() {
-    let searchContainer = document.querySelector('#searchContainer');
-
-    searchContainer.classList.remove('suggestionVisible')
-}
 
 
 window.addEventListener('load', () => {
@@ -56,4 +34,14 @@ function sidebarload() {
             let sidebarPlaceholder = document.querySelector('#sidebarplaceholder')
             sidebarPlaceholder.innerHTML = htmlText
         })
+}
+
+function sidebarDropDownToggleClicked(targetElement) {
+    targetElement.closest('.dropdownSection').classList.toggle('active')
+
+}
+
+function showCreatLableDialog() {
+    let dialog = document.querySelector('#labledialogeEditor')
+    dialog.classList.add('active')
 }
