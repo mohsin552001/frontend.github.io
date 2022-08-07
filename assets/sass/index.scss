@@ -199,18 +199,20 @@ body {
 }
 
 .dialoge {
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    display: none;
     position: fixed;
     top: 0px;
     left: 0px;
-    display: none;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+
 
     &.active {
-        display: block;
+        display: flex;
     }
 
     .dialogeOverlay {
@@ -219,7 +221,7 @@ body {
         position: fixed;
 
         background-color: rgba(#000, 0.5);
-
+        left: 0px;
     }
 
     .dialogeContentContainer {

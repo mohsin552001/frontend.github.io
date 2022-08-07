@@ -131,22 +131,24 @@ body {
       font-size: 23px; }
 
 .dialoge {
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  display: none;
   position: fixed;
   top: 0px;
   left: 0px;
-  display: none; }
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px; }
   .dialoge.active {
-    display: block; }
+    display: flex; }
   .dialoge .dialogeOverlay {
     width: 100%;
     height: 100%;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.5); }
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0px; }
   .dialoge .dialogeContentContainer {
     min-width: 300px;
     min-height: 200px;
