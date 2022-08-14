@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 window.addEventListener('load', () => {
     onwindowload()
 })
@@ -17,7 +10,7 @@ function onwindowload() {
 
 
 function loadheader() {
-    fetch('common/header.html')
+    fetch('/common/header.html')
         .then(r => r.text())
         .then((htmlText) => {
             let headerPlaceholder = document.querySelector('#headerplaceholder')
@@ -28,7 +21,7 @@ function loadheader() {
 
 
 function sidebarload() {
-    fetch('common/sidebar.html')
+    fetch('/common/sidebar.html')
         .then(r => r.text())
         .then((htmlText) => {
             let sidebarPlaceholder = document.querySelector('#sidebarplaceholder')
@@ -44,9 +37,22 @@ function sidebarDropDownToggleClicked(targetElement) {
 function showCreatLableDialog() {
     let dialog = document.querySelector('#labledialogeEditor')
     dialog.classList.add('active')
+    showDialoge(dialog)
 }
 
 function hideCreatLableDialog() {
     let dialog = document.querySelector('#labledialogeEditor')
     dialog.classList.remove('active')
+    closeDialoge(dialog)
+}
+
+
+
+function closeDialoge(dialogeElement) {
+    dialogeElement.classList.remove('active')
+}
+
+
+function showDialoge(dialogeElement) {
+    dialogeElement.classList.add('active')
 }

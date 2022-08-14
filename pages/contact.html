@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body id="contactPage">
+    <div id="headerplaceholder"></div>
+    <div id="contentContiner">
+        <div id="sidebarplaceholder"></div>
+        <div id="content">
+            <div id="contactHeader">
+                <div class="avatar">A</div>
+                <div class="nameSection">
+                    <div class="name">Mohsin Raza</div><br>
+                    <div class="lableSection">
+                        <div class="lables">
+                            <div class="lable">lable 1</div>
+                            <div class="lable">lable 2</div>
+                            <div class="lable">lable 3</div>
+                            <div class="lable">lable 4</div>
+                        </div>
+                        <div class="lablesPickerButton"
+                            onclick="showDialoge(document.querySelector('#lablePickerDialoge'))">
+                            <i class="fa fa-tag" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="actionSection">
+                    <button class="editButton primary-button button">Edit</button>
+                    <button class="deleteButton button">Delete</button>
+                </div>
+            </div>
+            <div id="contactContentContainer">
+                <div class="contactContent">
+                    <h6>Contact Details</h6>
+                    <div class="field">
+                        <div class="iconContainer">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="value"><a href="mailto:testing@mohsintech.com">MohsinTech@gmail.com</a></div>
+                    </div>
+                    <div class="field">
+                        <div class="iconContainer">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="value">Phone: +83838383883</div>
+                    </div>
+                    <div class="field">
+                        <div class="iconContainer">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="value">Website: https://www.ayyazTech.com</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="dialoge  " id="lablePickerDialoge">
+        <div class="dialogeOverlay" onclick="closeDialoge(this.closest('.dialoge'))">
+
+        </div>
+        <div class="dialogeContentContainer">
+            <div class="dialogeTitle">
+                pick a lable
+            </div>
+            <div class="dialogeContent">
+                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+                    <div class="iconSection">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Lable 1</div>
+                    <div class="selectionIcon primary-color">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+                    <div class="iconSection">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Lable 1</div>
+                    <div class="selectionIcon primary-color">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+                    <div class="iconSection">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Lable 1</div>
+                    <div class="selectionIcon primary-color">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="dialogefooter">
+                    <button>+ Creat Lable</button>
+                    <button>Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/common.js"></script>
+</body>
+
+</html>

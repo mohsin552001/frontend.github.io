@@ -39,7 +39,7 @@
                         selected
                     </div>
                 </div>
-                <div class="tableBody kia">
+                <div class="tableBody ">
 
 
 
@@ -179,7 +179,7 @@
 
 
             Contacts.forEach((contact) => {
-                tableRowsHtml += `<div class="tableRow contactRow ${contact.selected ? "selected" : ""}">
+                tableRowsHtml += `<div onclick="window.location='/pages/contact.html'" class="tableRow contactRow ${contact.selected ? "selected" : ""}">
 
 <div class="coulmn ">
     <div class="avatar">A</div>

@@ -1,3 +1,22 @@
+#lablePickerDialoge .dialogeContent {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+#lablePickerDialoge .lable {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  cursor: pointer; }
+  #lablePickerDialoge .lable .iconSection {
+    color: #9e9e9e; }
+  #lablePickerDialoge .lable .text {
+    font-size: 14px;
+    flex-grow: 1; }
+  #lablePickerDialoge .lable:hover {
+    background-color: rgba(0, 0, 0, 0.05); }
+
 body {
   margin: 0px;
   display: flex;
@@ -5,6 +24,34 @@ body {
   height: 100vh;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif; }
+
+.button {
+  padding: 8px 22px;
+  border: none;
+  border: 1px solid;
+  outline: none;
+  box-shadow: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: transparent; }
+  .button:hover {
+    background-color: rgba(0, 0, 0, 0.01); }
+
+.primary-button {
+  background-color: #1b73e8;
+  color: #fff;
+  border: 1px solid;
+  border-color: #1b73e8; }
+  .primary-button:hover {
+    background-color: transparent;
+    color: #1b73e8; }
+
+a {
+  text-decoration: none;
+  color: #1b73e8; }
+  a:hover {
+    color: #155ebd; }
 
 .avatar {
   display: flex;
@@ -33,7 +80,8 @@ body {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 20px; }
+      font-size: 20px;
+      cursor: pointer; }
   #header #searchsection {
     flex-grow: 1; }
     #header #searchsection #searchContainer {
@@ -184,7 +232,8 @@ body {
       .dialoge .dialogeContentContainer .dialogefooter button {
         background-color: transparent;
         border: 0px;
-        color: #1b73e8; }
+        color: #1b73e8;
+        cursor: pointer; }
 
 #contentContiner {
   display: flex;
@@ -323,3 +372,73 @@ body {
             display: none; }
         #contentContiner #content .table .tableBody .tableRow:hover .actionButtons {
           display: block; }
+
+#contactPage #contactHeader {
+  display: flex;
+  padding-top: 20px;
+  padding-left: 40px;
+  gap: 30px;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px; }
+  #contactPage #contactHeader .avatar {
+    width: 150px;
+    height: 150px;
+    font-size: 64px; }
+  #contactPage #contactHeader .nameSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column; }
+    #contactPage #contactHeader .nameSection .name {
+      font-size: 28px; }
+    #contactPage #contactHeader .nameSection .lableSection {
+      display: flex;
+      align-items: center;
+      gap: 10px; }
+      #contactPage #contactHeader .nameSection .lableSection .lables {
+        display: flex;
+        gap: 7px; }
+        #contactPage #contactHeader .nameSection .lableSection .lables .lable {
+          font-size: 12px;
+          border: 1px solid;
+          padding: 5px 10px;
+          border-radius: 20px;
+          cursor: pointer; }
+          #contactPage #contactHeader .nameSection .lableSection .lables .lable:hover {
+            background-color: rgba(235, 235, 235, 0.2); }
+      #contactPage #contactHeader .nameSection .lableSection .lablesPickerButton {
+        border-radius: 50%;
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        color: #1b73e8; }
+        #contactPage #contactHeader .nameSection .lableSection .lablesPickerButton:hover {
+          background-color: rgba(235, 235, 235, 0.2); }
+  #contactPage #contactHeader .actionSection {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 100px; }
+
+#contactPage #contactContentContainer {
+  padding-top: 30px; }
+  #contactPage #contactContentContainer .contactContent {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block; }
+    #contactPage #contactContentContainer .contactContent h6 {
+      margin-top: 0px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 600; }
+    #contactPage #contactContentContainer .contactContent .field {
+      display: flex;
+      gap: 10px;
+      padding-bottom: 4px;
+      font-size: 13px; }
