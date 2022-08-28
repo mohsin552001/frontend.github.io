@@ -17,6 +17,15 @@
   #lablePickerDialoge .lable:hover {
     background-color: rgba(0, 0, 0, 0.05); }
 
+input {
+  width: 100%;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  height: 30px; }
+  input:focus {
+    border-bottom: 2px solid #1b73e8; }
+
 body {
   margin: 0px;
   display: flex;
@@ -62,7 +71,40 @@ a {
   font-size: 15px;
   background-color: darkslateblue;
   color: #fff;
-  border-radius: 50%; }
+  border-radius: 50%;
+  position: relative;
+  background-size: cover;
+  background-position: center; }
+  .avatar.cameraIconButton {
+    background-color: #e0e0e0; }
+    .avatar.cameraIconButton .fa-user {
+      font-size: 120px; }
+    .avatar.cameraIconButton.imagePicked .fa-user {
+      display: none; }
+    .avatar.cameraIconButton button {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      margin: auto;
+      border-color: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: #fff;
+      border: 0px;
+      font-size: 22px;
+      background-color: #8f8d8d; }
+      .avatar.cameraIconButton button input {
+        display: none; }
+      .avatar.cameraIconButton button .lable {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        cursor: pointer; }
 
 #header {
   height: 50px;
@@ -214,14 +256,6 @@ a {
     .dialoge .dialogeContentContainer .dialogeContent {
       flex-grow: 1;
       padding: 10px 20px; }
-      .dialoge .dialogeContentContainer .dialogeContent input {
-        width: 100%;
-        border: 0px;
-        border-bottom: 1px solid #ccc;
-        outline: none;
-        height: 30px; }
-        .dialoge .dialogeContentContainer .dialogeContent input:focus {
-          border-bottom: 2px solid #1b73e8; }
     .dialoge .dialogeContentContainer .dialogefooter {
       min-height: 30px;
       padding: 15px 20px;
@@ -373,7 +407,8 @@ a {
         #contentContiner #content .table .tableBody .tableRow:hover .actionButtons {
           display: block; }
 
-#contactPage #contactHeader {
+#contactPage #contactHeader,
+#contactEditorPage #contactEditorHeader {
   display: flex;
   padding-top: 20px;
   padding-left: 40px;
@@ -381,32 +416,41 @@ a {
   align-items: center;
   border-bottom: 1px solid #ccc;
   padding-bottom: 30px; }
-  #contactPage #contactHeader .avatar {
+  #contactPage #contactHeader .avatar,
+  #contactEditorPage #contactEditorHeader .avatar {
     width: 150px;
     height: 150px;
     font-size: 64px; }
-  #contactPage #contactHeader .nameSection {
+  #contactPage #contactHeader .nameSection,
+  #contactEditorPage #contactEditorHeader .nameSection {
     display: flex;
-    align-items: center;
-    flex-direction: column; }
-    #contactPage #contactHeader .nameSection .name {
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 30vw; }
+    #contactPage #contactHeader .nameSection .name,
+    #contactEditorPage #contactEditorHeader .nameSection .name {
       font-size: 28px; }
-    #contactPage #contactHeader .nameSection .lableSection {
+    #contactPage #contactHeader .nameSection .lableSection,
+    #contactEditorPage #contactEditorHeader .nameSection .lableSection {
       display: flex;
       align-items: center;
       gap: 10px; }
-      #contactPage #contactHeader .nameSection .lableSection .lables {
+      #contactPage #contactHeader .nameSection .lableSection .lables,
+      #contactEditorPage #contactEditorHeader .nameSection .lableSection .lables {
         display: flex;
         gap: 7px; }
-        #contactPage #contactHeader .nameSection .lableSection .lables .lable {
+        #contactPage #contactHeader .nameSection .lableSection .lables .lable,
+        #contactEditorPage #contactEditorHeader .nameSection .lableSection .lables .lable {
           font-size: 12px;
           border: 1px solid;
           padding: 5px 10px;
           border-radius: 20px;
           cursor: pointer; }
-          #contactPage #contactHeader .nameSection .lableSection .lables .lable:hover {
+          #contactPage #contactHeader .nameSection .lableSection .lables .lable:hover,
+          #contactEditorPage #contactEditorHeader .nameSection .lableSection .lables .lable:hover {
             background-color: rgba(235, 235, 235, 0.2); }
-      #contactPage #contactHeader .nameSection .lableSection .lablesPickerButton {
+      #contactPage #contactHeader .nameSection .lableSection .lablesPickerButton,
+      #contactEditorPage #contactEditorHeader .nameSection .lableSection .lablesPickerButton {
         border-radius: 50%;
         border: 1px solid;
         display: flex;
@@ -416,9 +460,11 @@ a {
         height: 25px;
         cursor: pointer;
         color: #1b73e8; }
-        #contactPage #contactHeader .nameSection .lableSection .lablesPickerButton:hover {
+        #contactPage #contactHeader .nameSection .lableSection .lablesPickerButton:hover,
+        #contactEditorPage #contactEditorHeader .nameSection .lableSection .lablesPickerButton:hover {
           background-color: rgba(235, 235, 235, 0.2); }
-  #contactPage #contactHeader .actionSection {
+  #contactPage #contactHeader .actionSection,
+  #contactEditorPage #contactEditorHeader .actionSection {
     display: flex;
     align-items: flex-end;
     justify-content: end;
@@ -442,3 +488,32 @@ a {
       gap: 10px;
       padding-bottom: 4px;
       font-size: 13px; }
+
+#contactEditorPage .contactEditorContent {
+  width: 40vw;
+  padding-left: 50px;
+  padding-top: 20px; }
+  #contactEditorPage .contactEditorContent .row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%; }
+    #contactEditorPage .contactEditorContent .row .crossIconColumn {
+      width: 40px;
+      height: 40px;
+      color: #ccc;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-left: -10px; }
+      #contactEditorPage .contactEditorContent .row .crossIconColumn .fa {
+        display: none; }
+    #contactEditorPage .contactEditorContent .row:hover .crossIconColumn .fa {
+      display: block; }
+    #contactEditorPage .contactEditorContent .row .inputCoulmn {
+      flex-grow: 1; }
+      #contactEditorPage .contactEditorContent .row .inputCoulmn input {
+        width: 100%; }
+    #contactEditorPage .contactEditorContent .row .iconCoulmn .fa {
+      color: #ccc; }

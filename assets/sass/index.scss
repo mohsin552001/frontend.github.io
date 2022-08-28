@@ -34,6 +34,18 @@ $primaryColor :#1b73e8;
 
 }
 
+input {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    height: 30px;
+
+    &:focus {
+        border-bottom: 2px solid #1b73e8;
+    }
+}
+
 body {
     margin: 0px;
     display: flex;
@@ -92,6 +104,53 @@ a {
     background-color: darkslateblue;
     color: #fff;
     border-radius: 50%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+
+    &.cameraIconButton {
+        background-color: rgb(224, 224, 224);
+
+        .fa-user {
+            font-size: 120px;
+        }
+
+        &.imagePicked {
+            .fa-user {
+                display: none;
+            }
+        }
+
+        button {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            margin: auto;
+            border-color: rgba(#000000, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: #fff;
+            border: 0px;
+            font-size: 22px;
+            background-color: rgb(143, 141, 141);
+
+            input {
+                display: none;
+            }
+
+            .lable {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+        }
+    }
 
 }
 
@@ -320,17 +379,7 @@ a {
             flex-grow: 1;
             padding: 10px 20px;
 
-            input {
-                width: 100%;
-                border: 0px;
-                border-bottom: 1px solid #ccc;
-                outline: none;
-                height: 30px;
 
-                &:focus {
-                    border-bottom: 2px solid #1b73e8;
-                }
-            }
         }
 
         .dialogefooter {
@@ -598,68 +647,49 @@ a {
     }
 }
 
+#contactPage #contactHeader,
+#contactEditorPage #contactEditorHeader {
 
+    display: flex;
+    padding-top: 20px;
+    padding-left: 40px;
+    gap: 30px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px;
 
-// AT THIS POSITION I AM GOING TO FORM THE CONTACT PAGE
+    .avatar {
+        width: 150px;
+        height: 150px;
+        font-size: 64px;
+    }
 
-
-#contactPage {
-    #contactHeader {
+    .nameSection {
         display: flex;
-        padding-top: 20px;
-        padding-left: 40px;
-        gap: 30px;
-        align-items: center;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 30px;
 
-        .avatar {
-            width: 150px;
-            height: 150px;
-            font-size: 64px;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-width: 30vw;
+
+        .name {
+            font-size: 28px;
         }
 
-        .nameSection {
+        .lableSection {
             display: flex;
             align-items: center;
-            flex-direction: column;
+            gap: 10px;
 
-            .name {
-                font-size: 28px;
-            }
-
-            .lableSection {
+            .lables {
                 display: flex;
-                align-items: center;
-                gap: 10px;
+                gap: 7px;
 
-                .lables {
-                    display: flex;
-                    gap: 7px;
-
-                    .lable {
-                        font-size: 12px;
-                        border: 1px solid;
-                        padding: 5px 10px;
-                        border-radius: 20px;
-                        cursor: pointer;
-
-                        &:hover {
-                            background-color: rgba(235, 235, 235, 0.2);
-                        }
-                    }
-                }
-
-                .lablesPickerButton {
-                    border-radius: 50%;
+                .lable {
+                    font-size: 12px;
                     border: 1px solid;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 25px;
-                    height: 25px;
+                    padding: 5px 10px;
+                    border-radius: 20px;
                     cursor: pointer;
-                    color: $primaryColor;
 
                     &:hover {
                         background-color: rgba(235, 235, 235, 0.2);
@@ -667,17 +697,41 @@ a {
                 }
             }
 
+            .lablesPickerButton {
+                border-radius: 50%;
+                border: 1px solid;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+                color: $primaryColor;
 
+                &:hover {
+                    background-color: rgba(235, 235, 235, 0.2);
+                }
+            }
         }
 
-        .actionSection {
-            display: flex;
-            align-items: flex-end;
-            justify-content: end;
-            gap: 10px;
-            margin-top: 100px;
-        }
+
     }
+
+    .actionSection {
+        display: flex;
+        align-items: flex-end;
+        justify-content: end;
+        gap: 10px;
+        margin-top: 100px;
+    }
+}
+
+
+// AT THIS POSITION I AM GOING TO FORM THE CONTACT PAGE
+
+
+#contactPage {
+
 
     #contactContentContainer {
         padding-top: 30px;
@@ -702,6 +756,66 @@ a {
                 padding-bottom: 4px;
                 font-size: 13px;
             }
+        }
+    }
+}
+
+
+#contactEditorPage {
+    .contactEditorContent {
+        width: 40vw;
+        padding-left: 50px;
+        padding-top: 20px;
+
+        .row {
+
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 20px;
+            width: 100%;
+
+            .crossIconColumn {
+                width: 40px;
+                height: 40px;
+                color: #ccc;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                margin-left: -10px;
+
+                .fa {
+                    display: none;
+                }
+
+            }
+
+            &:hover {
+                .crossIconColumn {
+                    .fa {
+                        display: block;
+                    }
+                }
+            }
+
+            .inputCoulmn {
+                flex-grow: 1;
+
+                input {
+                    width: 100%;
+                }
+
+
+            }
+
+            .iconCoulmn {
+                .fa {
+                    color: #ccc;
+                }
+            }
+
+
+
         }
     }
 }
