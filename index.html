@@ -1,243 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="stylesheet" href="./assets/vendors/font-awesome/css/font-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="./assets/vendors/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div id="headerplaceholder"></div>
 
     <div id="contentContiner">
-        <div id="sidebarplaceholder"></div>
+      <div id="sidebarplaceholder"></div>
 
-        <div id="content">
+      <div id="content">
+        <div class="table">
+          <div class="tableHead">
+            <div class="coulmn">Name</div>
+            <div class="coulmn">Email</div>
+            <div class="coulmn">Phone Number</div>
+            <div class="coulmn">Lables</div>
+            <div class="coulmn" style="width: 40px"></div>
+          </div>
 
-            <div class="table">
-                <div class="tableHead">
-                    <div class="coulmn">Name</div>
-                    <div class="coulmn">Email</div>
-                    <div class="coulmn">Phone Number</div>
-                    <div class="coulmn">Lables</div>
-                    <div class="coulmn" style="width: 40px"></div>
-                </div>
-
-
-                <div class="actionBar">
-                    <div class="buttons">
-                        <i class="fa fa-tags" aria-hidden="true"></i>
-                        <i class="fa fa-trash" onclick="deleteSelectContacts()" aria-hidden="true"></i>
-
-                    </div>
-                    <div class="rightSection">
-                        <div class="numberOfSelectedContacts">2</div>
-                        selected
-                    </div>
-                </div>
-                <div class="tableBody ">
-
-
-
-                </div>
+          <div class="actionBar">
+            <div class="buttons">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              <i
+                class="fa fa-trash"
+                onclick="deleteSelectContacts()"
+                aria-hidden="true"
+                >sddf</i
+              >
             </div>
+            <div class="rightSection">
+              <div class="numberOfSelectedContacts">2</div>
+              selected
+            </div>
+          </div>
+          <div class="tableBody"></div>
         </div>
+      </div>
     </div>
-
+    <script src="./assets/js/common.js"></script>
     <script>
+      let baseUrl = "http://localhost:3400";
 
-        let Contacts = [
-            {
-                id: 1,
-                name: "David",
-                email: "david@gmail.com",
-                phone: '929929292',
-                lables: ["lable1,lable2,lable3"]
+      let Contacts = [];
 
-            },
-            {
-                id: 2,
-                name: "Finch",
-                email: "finch@gmail.com",
-                phone: '929929292',
-                lables: ["lable1,lable2,lable3"]
+      loadContacts();
 
-            },
-            {
-                id: 3,
-                name: "john",
-                email: "john@gmail.com",
-                phone: '92902022002929292',
-                lables: ["lable1,lable2,lable3"]
+      async function loadContacts() {
+        let response = await fetch(`${baseUrl}/contact`);
+        let data = await response.json();
+        Contacts = data;
+        console.log(data);
+        RenderContacts();
+      }
 
-            },
-            {
-                id: 4,
-                name: "David",
-                email: "david@gmail.com",
-                phone: '929929292',
-                lables: ["lable1,lable2,lable3"]
+      function getselectedContacts() {
+        return Contacts.filter((contact) => contact.selected);
+      }
+      //samajh nahi aye deleteSelectContacts
+      async function deleteSelectContacts(pSelectedContacts = undefined) {
+        let selectedContacts = pSelectedContacts
+          ? pSelectedContacts
+          : getselectedContacts();
 
-            },
-            {
-                id: 5,
-                name: "Finch",
-                email: "finch@gmail.com",
-                phone: '929929292',
-                lables: ["lable1,lable2,lable3"]
+        getselectedContacts();
+        let selectedContactIds = selectedContacts.map((contact) => contact.id);
+        Contacts = Contacts.filter(
+          (contact) => !selectedContactIds.includes(contact.id)
+        );
 
-            },
-            {
-                id: 6,
-                name: "David",
-                email: "david@gmail.com",
-                phone: '929929292',
-                lables: ["lable1,lable2,lable3"]
+        selectedContacts = Contacts.filter((contact) => contact.selected);
 
-            },
-            {
-                id: 7,
-                name: "Finch",
-                email: "finch@gmail.com",
-                phone: '929929292',
-                lables: ["lable1,lable2,lable3"]
+        RenderContacts();
+        selectedContacts = getselectedContacts();
+        updateNumberOfSelectedContacts(selectedContacts.length);
+        showHideSelectedContacts(selectedContacts);
 
-            }
-        ];
+        await deleteContacts(selectedContactIds);
+      }
 
-        function getselectedContacts() {
-            return Contacts.filter((contact) => contact.selected)
+      window.onload = () => {
+        document
+          .querySelectorAll(".contactRow input[type=checkbox]")
+          .forEach((checkbox) => {
+            checkbox.addEventListener("change", (e) => {
+              let selectedContatctId = parseInt(e.currentTarget.value);
+              let selectedContact = Contacts.find(
+                (contact) => contact.id === selectedContatctId
+              );
+              if (e.currentTarget.checked) {
+                e.currentTarget
+                  .closest(".contactRow")
+                  .classList.add("selected");
+                if (selectedContact) {
+                  selectedContact.selected = true;
+                }
+              } else {
+                e.currentTarget
+                  .closest(".contactRow")
+                  .classList.remove("selected");
+                if (selectedContact) {
+                  selectedContact.selected = false;
+                }
+              }
+              let selectedContacts = Contacts.filter(
+                (contact) => contact.selected
+              );
+              showHideSelectedContacts(selectedContacts);
+              updateNumberOfSelectedContacts(selectedContacts.length);
+            });
+          });
+      };
+
+      function showHideSelectedContacts(selectedContacts) {
+        if (selectedContacts.length > 0) {
+          document.querySelector(".tableHead").classList.add("hide");
+          document.querySelector(".actionBar").classList.add("active");
+        } else {
+          document.querySelector(".tableHead").classList.remove("hide");
+          document.querySelector(".actionBar").classList.remove("active");
         }
-        //samajh nahi aye deleteSelectContacts
-        function deleteSelectContacts(pSelectedContacts = undefined) {
-            let selectedContacts = pSelectedContacts ? pSelectedContacts : getselectedContacts()
+      }
 
-            getselectedContacts()
-            let selectedContactIds = selectedContacts.map((contact) => contact.id)
-            Contacts = Contacts.filter((contact) => !selectedContactIds.includes(contact.id))
+      function updateNumberOfSelectedContacts(totalSelectedContacts) {
+        document.querySelector(".numberOfSelectedContacts").innerHTML =
+          totalSelectedContacts;
+      }
 
-            selectedContacts = Contacts.filter((contact) => contact.selected)
+      function RenderContacts() {
+        let tableBody = document.querySelector(".tableBody");
+        let tableRowsHtml = ``;
 
-            RenderContacts()
-            selectedContacts = getselectedContacts()
-            updateNumberOfSelectedContacts(selectedContacts.length)
-            showHideSelectedContacts(selectedContacts)
-        }
-
-
-
-        window.onload = () => {
-            RenderContacts()
-            document.querySelectorAll('.contactRow input[type=checkbox]')
-                .forEach((checkbox) => {
-                    checkbox.addEventListener('change', (e) => {
-                        let selectedContatctId = parseInt(e.currentTarget.value)
-                        let selectedContact = Contacts.find((contact) => contact.id === selectedContatctId)
-                        if (e.currentTarget.checked) {
-                            e.currentTarget.closest(".contactRow").classList.add('selected')
-                            if (selectedContact) {
-                                selectedContact.selected = true;
-                            }
-                        } else {
-                            e.currentTarget.closest(".contactRow").classList.remove('selected')
-                            if (selectedContact) {
-                                selectedContact.selected = false
-                            }
-                        }
-                        let selectedContacts = Contacts.filter((contact) => contact.selected)
-                        showHideSelectedContacts(selectedContacts)
-                        updateNumberOfSelectedContacts(selectedContacts.length)
-                    })
-                })
-
-        }
-
-        function showHideSelectedContacts(selectedContacts) {
-            if (selectedContacts.length > 0) {
-                document.querySelector('.tableHead').classList.add('hide')
-                document.querySelector('.actionBar').classList.add('active')
-            } else {
-                document.querySelector('.tableHead').classList.remove('hide')
-                document.querySelector('.actionBar').classList.remove('active')
-            }
-        }
-
-
-        function updateNumberOfSelectedContacts(totalSelectedContacts) {
-            document.querySelector('.numberOfSelectedContacts').innerHTML = totalSelectedContacts
-        }
-
-
-
-        function RenderContacts() {
-            let tableBody = document.querySelector('.tableBody')
-            let tableRowsHtml = ``;
-
-
-            Contacts.forEach((contact) => {
-                tableRowsHtml += `<div onclick="window.location='/pages/contact.html'" class="tableRow contactRow ${contact.selected ? "selected" : ""}">
+        Contacts.forEach((contact) => {
+          tableRowsHtml += `<div onclick="window.location='/pages/contact.html?id=${
+            contact.id
+          }'" class="tableRow contactRow ${contact.selected ? "selected" : ""}">
 
 <div class="coulmn ">
     <div class="avatar">A</div>
-    <div class="checkbox"><input type="checkbox" ${contact.selected ? "checked" : ""} value="${contact.id}"></div>
-    ${contact.name}
+    <div class="checkbox" onClick=" event.stopImmediatePropagation()"><input type="checkbox" ${
+      contact.selected ? "checked" : ""
+    } value="${contact.id}"></div>
+    ${contact.fullname}
 </div>
 <div class="coulmn">${contact.email}</div>
 <div class="coulmn">${contact.phone}</div>
-<div class="coulmn">${contact.lables}</div>
+<div class="coulmn">${!contact.lables ? "" : contact.lables?.json(", ")}</div>
 <div class="coulmn" style="width:40px">
     <div class="actionButtons">
-        <i  class="fa fa-trash" onclick="deleteContact(${contact.id})" aria-hidden="true"></i>
+        <i  class="fa fa-trash" onclick="deleteContact(${
+          contact.id
+        },event)" aria-hidden="true"></i>
+        <i  class="fa fa-edit" onclick="editContact(${
+          contact.id
+        },event)" aria-hidden="true"></i>
         </div>
 
     </div>
 </div>
-`
+`;
+        });
+        tableBody.innerHTML = tableRowsHtml;
+      }
 
-            })
-            tableBody.innerHTML = tableRowsHtml
+      function deleteContact(contactId, event) {
+        event.stopImmediatePropagation();
+        let contact = Contacts.find((contact) => contact.id == contactId);
+        if (contact) {
+          deleteSelectContacts([contact]);
         }
+      }
 
-        function deleteContact(contactId) {
-            let contact = Contacts.find((contact) => contact.id == contactId)
-            if (contact) {
-                deleteSelectContacts([contact])
-            }
+      function editContact(contactId, event) {
+        event.stopImmediatePropagation();
+       window.location =`/pages/contact-editor.html?id=${contactId}`
+      }
+
+
+
+      function searchkeyup(event) {
+        let keywords = event.currentTarget.value;
+
+        if (keywords.length > 0) {
+          showSuggestionbox();
+        } else {
+          hideSuggestionbox();
         }
+      }
+      function clearSearchInput() {
+        let input = document.querySelector("#searchContainer input");
+        input.value = "";
+        hideSuggestionbox();
+      }
 
-        function searchkeyup(event) {
-            let keywords = event.currentTarget.value
+      function showSuggestionbox() {
+        let searchContainer = document.querySelector("#searchContainer");
 
-            if (keywords.length > 0) {
-                showSuggestionbox()
-            } else {
-                hideSuggestionbox()
-            }
+        searchContainer.classList.add("suggestionVisible");
+      }
+      function hideSuggestionbox() {
+        let searchContainer = document.querySelector("#searchContainer");
 
-        }
-        function clearSearchInput() {
-            let input = document.querySelector('#searchContainer input')
-            input.value = ""
-            hideSuggestionbox()
-        }
-
-        function showSuggestionbox() {
-            let searchContainer = document.querySelector('#searchContainer');
-
-            searchContainer.classList.add('suggestionVisible')
-        }
-        function hideSuggestionbox() {
-            let searchContainer = document.querySelector('#searchContainer');
-
-            searchContainer.classList.remove('suggestionVisible')
-        }
-
+        searchContainer.classList.remove("suggestionVisible");
+      }
     </script>
-    <script src="./assets/js/common.js"></script>
-</body>
-
+  </body>
 </html>

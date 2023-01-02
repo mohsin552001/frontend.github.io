@@ -1,155 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>contact</title>
 
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/vendors/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
 
-<body id="contactEditorPage">
+  <body id="contactEditorPage">
     <div id="headerplaceholder"></div>
     <div id="contentContiner">
-        <div id="sidebarplaceholder"></div>
-        <div id="content">
-            <div id="contactEditorHeader">
+      <div id="sidebarplaceholder"></div>
+      <form
+        id="content"
+        action="javascript:void(0)"
+        onsubmit="onFormSubmit(event)"
+      >
+        <div id="contactEditorHeader">
+          <div class="avatar cameraIconButton">
+            <i class="fa fa-user" aria-hidden="true"></i>
 
-                <div class="avatar cameraIconButton">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-
-                    <button>
-                        <input type="file" id="avatarFilePickerInput" onchange="onFileChange(this.files)">
-                        <label class="lable" for="avatarFilePickerInput"><i class="fa fa-camera"
-                                aria-hidden="true"></i></label>
-                    </button>
-                </div>
-                <div class="nameSection">
-                    <div class="name"></div><br>
-                    <div class="lableSection">
-                        <div class="lables">
-
-                        </div>
-                        <div class="lablesPickerButton"
-                            onclick="showDialoge(document.querySelector('#lablePickerDialoge'))">
-                            <i class="fa fa-tag" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="actionSection">
-                    <button class="editButton primary-button button">Save</button>
-                </div>
-
+            <button>
+              <input
+                type="file"
+                id="avatarFilePickerInput"
+                onchange="onFileChange(this.files)"
+              />
+              <label class="lable" for="avatarFilePickerInput"
+                ><i class="fa fa-camera" aria-hidden="true"></i
+              ></label>
+            </button>
+          </div>
+          <div class="nameSection">
+            <div class="name"></div>
+            <br />
+            <div class="lableSection">
+              <div class="lables"></div>
+              <div
+                class="lablesPickerButton"
+                onclick="showDialoge(document.querySelector('#lablePickerDialoge'))"
+              >
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              </div>
             </div>
-            <div class="contactEditorContent">
-                <div class="row">
-                    <div class="iconCoulmn">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </div>
-                    <div class="inputCoulmn">
-                        <input type="text" placeholder="Full Name">
-                    </div>
-                    <div class="crossIconColumn " onclick="this.closest('.row').querySelector('input').value=''">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="iconCoulmn">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="inputCoulmn">
-                        <input type="text" placeholder="Email">
-                    </div>
-                    <div class="crossIconColumn " onclick="this.closest('.row').querySelector('input').value=''">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="iconCoulmn">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                    </div>
-                    <div class="inputCoulmn">
-                        <input type="text" placeholder="Phone">
-                    </div>
-                    <div class="crossIconColumn " onclick="this.closest('.row').querySelector('input').value=''">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="iconCoulmn">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </div>
-                    <div class="inputCoulmn">
-                        <input type="text" placeholder="Websitef">
-                    </div>
-                    <div class="crossIconColumn " onclick="this.closest('.row').querySelector('input').value=''">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-
+          </div>
+          <div class="actionSection">
+            <button type="submit" class="editButton primary-button button">
+              Save
+            </button>
+          </div>
         </div>
+        <div class="contactEditorContent">
+          <div class="row">
+            <div class="iconCoulmn">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="inputCoulmn">
+              <input name="fullname" type="text" placeholder="Full Name" />
+            </div>
+            <div
+              class="crossIconColumn"
+              onclick="this.closest('.row').querySelector('input').value=''"
+            >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="iconCoulmn">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </div>
+            <div class="inputCoulmn">
+              <input name="email" type="text" placeholder="Email" />
+            </div>
+            <div
+              class="crossIconColumn"
+              onclick="this.closest('.row').querySelector('input').value=''"
+            >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="iconCoulmn">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="inputCoulmn">
+              <input name="phone" type="text" placeholder="Phone" />
+            </div>
+            <div
+              class="crossIconColumn"
+              onclick="this.closest('.row').querySelector('input').value=''"
+            >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="iconCoulmn">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="inputCoulmn">
+              <input name="website" type="text" placeholder="Websitef" />
+            </div>
+            <div
+              class="crossIconColumn"
+              onclick="this.closest('.row').querySelector('input').value=''"
+            >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
 
-
-    <div class="dialoge  " id="lablePickerDialoge">
-        <div class="dialogeOverlay" onclick="closeDialoge(this.closest('.dialoge'))">
-
-        </div>
-        <div class="dialogeContentContainer">
-            <div class="dialogeTitle">
-                pick a lable
+    <div class="dialoge" id="lablePickerDialoge">
+      <div
+        class="dialogeOverlay"
+        onclick="closeDialoge(this.closest('.dialoge'))"
+      ></div>
+      <div class="dialogeContentContainer">
+        <div class="dialogeTitle">pick a lable</div>
+        <div class="dialogeContent">
+          <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+            <div class="iconSection">
+              <i class="fa fa-tag" aria-hidden="true"></i>
             </div>
-            <div class="dialogeContent">
-                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
-                    <div class="iconSection">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </div>
-                    <div class="text">Lable 1</div>
-                    <div class="selectionIcon primary-color">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
-                    <div class="iconSection">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </div>
-                    <div class="text">Lable 1</div>
-                    <div class="selectionIcon primary-color">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
-                    <div class="iconSection">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </div>
-                    <div class="text">Lable 1</div>
-                    <div class="selectionIcon primary-color">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="dialogefooter">
-                    <button>+ Creat Lable</button>
-                    <button>Apply</button>
-                </div>
+            <div class="text">Lable 1</div>
+            <div class="selectionIcon primary-color">
+              <i class="fa fa-check" aria-hidden="true"></i>
             </div>
+          </div>
+          <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+            <div class="iconSection">
+              <i class="fa fa-tag" aria-hidden="true"></i>
+            </div>
+            <div class="text">Lable 1</div>
+            <div class="selectionIcon primary-color">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+            <div class="iconSection">
+              <i class="fa fa-tag" aria-hidden="true"></i>
+            </div>
+            <div class="text">Lable 1</div>
+            <div class="selectionIcon primary-color">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="dialogefooter">
+            <button>+ Creat Lable</button>
+            <button>Apply</button>
+          </div>
         </div>
+      </div>
     </div>
     <script src="../assets/js/common.js"></script>
     <script>
-        function onFileChange(files) {
-            let file = files.length > 0 ? files[0] : null;
-            getBase64fromFile(file).then((base64) => {
-                let avatar = document.querySelector('#contactEditorHeader .avatar')
+      let params = new URLSearchParams(location.search);
+      contactId = params.get("id");
 
-                avatar.style.backgroundImage = `url(${base64})`
-                avatar.classList.add('imagePicked')
-            })
-        }
+      if (contactId) {
+        loadContacts();
+      }
+
+      function onFileChange(files) {
+        let file = files.length > 0 ? files[0] : null;
+        getBase64fromFile(file).then((base64) => {
+          let avatar = document.querySelector("#contactEditorHeader .avatar");
+
+          avatar.style.backgroundImage = `url(${base64})`;
+          avatar.classList.add("imagePicked");
+        });
+      }
+
+      async function onFormSubmit(e) {
+        let formElement = e.target;
+        let formData = new FormData(formElement);
+
+        let data = {
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          fullname: formData.get("fullname"),
+          website: formData.get("website"),
+        };
+
+
+        //this is for the purpose of create new contact and for edit contact logic
+        save(data, contactId ? "update" : "create");
+      }
+      async function save(data, action) {
+        if (action === "update") data.id = contactId;
+        let response = await fetch(`http://localhost:3400/${action}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        window.location = "/";
+      }
+
+      async function loadContacts() {
+        let contact = await getContact(contactId);
+
+        let emailInput = document.querySelector(`[name='email']`);
+        let fullNameInput = document.querySelector(`[name='fullname']`);
+        let PhoneInput = document.querySelector(`[name='phone']`);
+        let websiteInput = document.querySelector(`[name='website']`);
+
+        emailInput.value = contact.email;
+        fullNameInput.value = contact.fullname;
+        PhoneInput.value = contact.phone;
+        websiteInput.value = contact.website;
+      }
     </script>
-</body>
-
+  </body>
 </html>

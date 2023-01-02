@@ -1,113 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>contact</title>
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/vendors/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
 
-<body id="contactPage">
+  <body id="contactPage">
     <div id="headerplaceholder"></div>
     <div id="contentContiner">
-        <div id="sidebarplaceholder"></div>
-        <div id="content">
-            <div id="contactHeader">
-                <div class="avatar">A</div>
-                <div class="nameSection">
-                    <div class="name">Mohsin Raza</div><br>
-                    <div class="lableSection">
-                        <div class="lables">
-                            <div class="lable">lable 1</div>
-                            <div class="lable">lable 2</div>
-                            <div class="lable">lable 3</div>
-                            <div class="lable">lable 4</div>
-                        </div>
-                        <div class="lablesPickerButton"
-                            onclick="showDialoge(document.querySelector('#lablePickerDialoge'))">
-                            <i class="fa fa-tag" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="actionSection">
-                    <button class="editButton primary-button button">Edit</button>
-                    <button class="deleteButton button">Delete</button>
-                </div>
+      <div id="sidebarplaceholder"></div>
+      <div id="preloading"> Loading ...please wait</div>
+      <div id="content" style="display: none;">
+        <div id="contactHeader">
+          <div class="avatar">A</div>
+          <div class="nameSection">
+            <div class="name">Mohsin Raza</div>
+            <br />
+            <div class="lableSection">
+              <div class="lables">
+                <div class="lable">lable 1</div>
+                <div class="lable">lable 2</div>
+                <div class="lable">lable 3</div>
+                <div class="lable">lable 4</div>
+              </div>
+              <div
+                class="lablesPickerButton"
+                onclick="showDialoge(document.querySelector('#lablePickerDialoge'))"
+              >
+                <i class="fa fa-tag" aria-hidden="true"></i>
+              </div>
             </div>
-            <div id="contactContentContainer">
-                <div class="contactContent">
-                    <h6>Contact Details</h6>
-                    <div class="field">
-                        <div class="iconContainer">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="value"><a href="mailto:testing@mohsintech.com">MohsinTech@gmail.com</a></div>
-                    </div>
-                    <div class="field">
-                        <div class="iconContainer">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                        </div>
-                        <div class="value">Phone: +83838383883</div>
-                    </div>
-                    <div class="field">
-                        <div class="iconContainer">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="value">Website: https://www.ayyazTech.com</div>
-                    </div>
-                </div>
-            </div>
-
+          </div>
+          <div class="actionSection">
+            <button class="editButton primary-button button" onclick="editClicked()">Edit</button>
+            <button class="deleteButton button" onclick="deleteContact()">Delete</button>
+          </div>
         </div>
+        <div id="contactContentContainer">
+          <div class="contactContent">
+            <h6>Contact Details</h6>
+            <div class="field">
+              <div class="iconContainer">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              </div>
+              <div class="value">
+                <a id="email" href="mailto:testing@mohsintech.com">MohsinTech@gmail.com</a>
+              </div>
+            </div>
+            <div class="field">
+              <div class="iconContainer">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+              </div>
+              <div class="value">Phone: <span id="phoneNumber"> +83838383883</span></div>
+            </div>
+            <div class="field">
+              <div class="iconContainer">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              </div>
+              <div class="value">Website: <span id="WebsiteURL">https://www.ayyazTech.com</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="dialoge  " id="lablePickerDialoge">
-        <div class="dialogeOverlay" onclick="closeDialoge(this.closest('.dialoge'))">
-
-        </div>
-        <div class="dialogeContentContainer">
-            <div class="dialogeTitle">
-                pick a lable
+    <div class="dialoge" id="lablePickerDialoge">
+      <div
+        class="dialogeOverlay"
+        onclick="closeDialoge(this.closest('.dialoge'))"
+      ></div>
+      <div class="dialogeContentContainer">
+        <div class="dialogeTitle">pick a lable</div>
+        <div class="dialogeContent">
+          <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+            <div class="iconSection">
+              <i class="fa fa-tag" aria-hidden="true"></i>
             </div>
-            <div class="dialogeContent">
-                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
-                    <div class="iconSection">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </div>
-                    <div class="text">Lable 1</div>
-                    <div class="selectionIcon primary-color">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
-                    <div class="iconSection">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </div>
-                    <div class="text">Lable 1</div>
-                    <div class="selectionIcon primary-color">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
-                    <div class="iconSection">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </div>
-                    <div class="text">Lable 1</div>
-                    <div class="selectionIcon primary-color">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <div class="dialogefooter">
-                    <button>+ Creat Lable</button>
-                    <button>Apply</button>
-                </div>
+            <div class="text">Lable 1</div>
+            <div class="selectionIcon primary-color">
+              <i class="fa fa-check" aria-hidden="true"></i>
             </div>
+          </div>
+          <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+            <div class="iconSection">
+              <i class="fa fa-tag" aria-hidden="true"></i>
+            </div>
+            <div class="text">Lable 1</div>
+            <div class="selectionIcon primary-color">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="lable" onclick="closeDialoge(this.closest('.dialoge'))">
+            <div class="iconSection">
+              <i class="fa fa-tag" aria-hidden="true"></i>
+            </div>
+            <div class="text">Lable 1</div>
+            <div class="selectionIcon primary-color">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="dialogefooter">
+            <button>+ Creat Lable</button>
+            <button>Apply</button>
+          </div>
         </div>
+      </div>
     </div>
-    <script src="../assets/js/common.js"></script>
-</body>
+    <script src="../assets/js/common.js">  </script>
+<script>
 
+//this is for the purpose to insert data to  related data like name etc into that page of details where we are sending getting more information that page name Contact Details
+let contactId;
+
+loadContact()
+
+
+function editClicked() {
+  window.location=`/pages/contact-editor.html?id=${contactId}`
+}
+  async function loadContact(){
+     let params =new URLSearchParams(location.search);
+     contactId =params.get('id');
+    
+let contact= await  getContact(contactId)
+
+
+     renderLayOut(contact);
+ }
+
+ function renderLayOut(contact){
+
+ document.querySelector('#contactHeader .name').innerHTML=contact.fullname
+ document.querySelector('#contactHeader .avatar').innerHTML=contact.fullname.charAt(0).toUpperCase()
+ document.querySelector('#email').innerHTML=contact.email
+ document.querySelector('#phoneNumber ').innerHTML=contact.phone
+ document.querySelector('#WebsiteURL ').innerHTML=contact.website
+ document.querySelector('#content').style.display ='block'
+
+ document.querySelector('#preloading').style.display ='none'
+ }
+
+
+
+async function deleteContact(){
+await deleteContacts([contactId])
+window.location='/'
+ }
+
+</script>
+
+  </body>
 </html>

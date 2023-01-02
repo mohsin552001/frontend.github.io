@@ -1,4 +1,6 @@
 
+
+     let backendbaseURL = "http://localhost:3400";
 window.addEventListener('load', () => {
     onwindowload()
 })
@@ -70,4 +72,22 @@ function getBase64fromFile(file) {
         }
     }
     )
+}
+
+
+async function deleteContacts(ids){
+    let response = await fetch(`${backendbaseURL}/contact/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ids: ids }),
+      });
+}
+
+
+async function getContact(contactId) {
+    let response =await fetch(`http://localhost:3400/contact/${contactId}`);
+    let contact =await response.json();
+    return contact
 }
